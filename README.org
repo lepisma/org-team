@@ -1,0 +1,3 @@
+#+TITLE: org-team
+
+My team management workflow in org mode.

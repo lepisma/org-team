@@ -1,3 +1,12 @@
 #+TITLE: org-team
 
 My team management workflow in org mode.
+
+Features
++ [ ] Inventory management
++ [ ] Shared notes with peers
++ [ ] Interaction log
++ [ ] Feedback session and task tracking
++ [ ] Event reminders and auto notifications
++ [ ] Metric tracking
++ [ ] Survey builder

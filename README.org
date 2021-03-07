@@ -1,10 +1,10 @@
 #+TITLE: org-team
 
-[[https://img.shields.io/github/v/tag/lepisma/org-team.svg?style=flat-square][version tag]]
+[[https://img.shields.io/github/v/tag/lepisma/org-team.svg?style=flat-square]]
 
-My team management tooling in org mode. Features are added as I need them. There
-is no long term plan or overarching vision here. You might still see versions
-tags though.
+My team management tooling in org mode. Features are added when I need them.
+There is no long term plan or overarching vision here. You might still see
+versions tags though.
 
 Notes on the workflow follow.
 

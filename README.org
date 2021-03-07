@@ -36,7 +36,7 @@ Next few sentences specify my views, positive or negative, on the situation
 which are followed up by the best thing that could have been done in that
 situation.
 
-The last bit about writing /the best thing/ to do derives from the /What "killing
+The last bit about writing /the best thing/ to do derives from the '/What "killing
 it" would look like/' idea from [[https://review.firstround.com/the-power-of-performance-reviews-use-this-system-to-become-a-better-manager][Lenny's notes]]. and [[https://github.com/Vernacular-ai/handbook/blob/master/values.md#strive-for-excellence][our value Strive for
 Excellence]].
 

@@ -21,8 +21,8 @@ content.
 
 **** Continuous logging
 For feedback discussions, it's important to keep logging situations when they
-occur. I use the following capture template that asks for the person's name then
-logs an entry with timestamp:
+occur. I use the following capture template that asks for the person's name,
+then logs an entry with timestamp:
 
 #+begin_src emacs-lisp
   (setq org-capture-templates

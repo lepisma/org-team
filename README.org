@@ -1,12 +1,49 @@
 #+TITLE: org-team
 
-My team management workflow in org mode.
+My team management tooling in org mode. Features are added as I need them. There
+is no long term plan or overarching vision here. You might still see versions
+tags though.
 
-Features
-+ [ ] Inventory management
-+ [ ] Shared notes with peers
-+ [ ] Interaction log
-+ [ ] Feedback session and task tracking
-+ [ ] Event reminders and auto notifications
-+ [ ] Metric tracking
-+ [ ] Survey builder
+Notes on the workflow follow.
+
+** Workflow
+Each person gets mapped to a local directory with certain structure (still in
+flux) in place. They also get an equivalent cloud directory where we keep shared
+content.
+
+*** Inventory
+...
+
+*** 1:1s
+...
+
+**** Continuous logging
+For feedback discussions, it's important to keep logging situations when they
+occur. This helps in concrete discussion later on. I use a capture template that
+maps to org-team directory structure. Here is the template which asks for the
+person's name and then logs an entry with timestamp:
+
+#+begin_src emacs-lisp
+  (setq org-capture-templates
+      ("t" "Team log" item (function org-team-visit-person-log)
+             "- %U %?" :prepend t))
+#+end_src
+
+In the text, I usually write a small phrase pointing to general area of note
+like ~ownership~, then write the situation with sufficient details, links, etc.
+The last few sentences specify my view on the situation (can be positive or
+negative) which is followed up by the best thing that could have been done in
+the situation.
+
+The last bit about writing the best thing to do derives from the /What "killing
+it" would look like/' idea from [[https://review.firstround.com/the-power-of-performance-reviews-use-this-system-to-become-a-better-manager][Lenny's notes]]. and [[https://github.com/Vernacular-ai/handbook/blob/master/values.md#strive-for-excellence][our value Strive for
+Excellence]].
+
+*** Reminders
+...
+
+*** Surveying and monitoring
+...
+
+*** Dashboard
+...

@@ -75,15 +75,25 @@
      (-map (lambda (d) (make-instance 'org-team-person :directory d)))
      (-remove (lambda (p) (null (org-team-person-file p))))))
 
+(defun org-team--pick-person ()
+  "Helm based picker for registered team members."
+  (let ((people (org-team-list-people)))
+    (helm :sources (helm-build-sync-source "Team member"
+                     :candidates (-map (lambda (p) (cons (org-team-person-name p) p)) people))
+          :buffer "*helm org team*"
+          :prompt "Name: ")))
+
+(defun org-team-visit-person-log ()
+  "Ask to pick the person and position cursor to add log entry."
+  (let ((person (org-team--pick-person)))
+    (org-team-person-open-file person)
+    (goto-char (point-min))
+    (re-search-forward "^* Log$")))
+
 (defun org-team ()
   "Main function to interact with people in team."
   (interactive)
-  (let ((people (org-team-list-people)))
-    (helm :sources (helm-build-sync-source "Team member"
-                     :candidates (-map (lambda (p) (cons (org-team-person-name p) p)) people)
-                     :action `(("Open notes" . org-team-person-open-file)))
-          :buffer "*helm org team*"
-          :prompt "Name: ")))
+  (org-team-person-open-file (org-team--pick-person)))
 
 (provide 'org-team)
 

@@ -21,9 +21,8 @@ content.
 
 **** Continuous logging
 For feedback discussions, it's important to keep logging situations when they
-occur. This helps in concrete discussion later on. I use a capture template that
-maps to org-team directory structure. Here is the template which asks for the
-person's name and then logs an entry with timestamp:
+occur. I use the following capture template that asks for the person's name then
+logs an entry with timestamp:
 
 #+begin_src emacs-lisp
   (setq org-capture-templates
@@ -31,13 +30,13 @@ person's name and then logs an entry with timestamp:
              "- %U %?" :prepend t))
 #+end_src
 
-In the text, I usually write a small phrase pointing to general area of note
-like ~ownership~, then write the situation with sufficient details, links, etc.
-The last few sentences specify my view on the situation (can be positive or
-negative) which is followed up by the best thing that could have been done in
-the situation.
+In the text, I usually write a small phrase pointing to the general area of note
+like ~ownership~. Then I log the situation with sufficient details, links, etc.
+Next few sentences specify my views, positive or negative, on the situation
+which are followed up by the best thing that could have been done in that
+situation.
 
-The last bit about writing the best thing to do derives from the /What "killing
+The last bit about writing /the best thing/ to do derives from the /What "killing
 it" would look like/' idea from [[https://review.firstround.com/the-power-of-performance-reviews-use-this-system-to-become-a-better-manager][Lenny's notes]]. and [[https://github.com/Vernacular-ai/handbook/blob/master/values.md#strive-for-excellence][our value Strive for
 Excellence]].
 

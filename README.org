@@ -26,8 +26,8 @@ then logs an entry with timestamp:
 
 #+begin_src emacs-lisp
   (setq org-capture-templates
-      ("t" "Team log" item (function org-team-visit-person-log)
-             "- %U %?" :prepend t))
+      '(("t" "Team log" item (function org-team-visit-person-log)
+             "- %U %?" :prepend t)))
 #+end_src
 
 In the text, I usually write a small phrase pointing to the general area of note

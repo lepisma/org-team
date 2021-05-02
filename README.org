@@ -14,7 +14,7 @@ flux) in place. They also get an equivalent cloud directory where we keep shared
 content.
 
 *** Inventory
-...
+I maintain a single inventory file with data kept in each person's directory.
 
 *** 1:1s
 ...

@@ -67,6 +67,33 @@
 (cl-defmethod org-team-person-open-file ((p org-team-person))
   (find-file (org-team-person-file p)))
 
+(defun org-team--parse-list-of-links ()
+  "Parse list items of org mode links from current position."
+  (let ((elem (org-element-context)))
+    (when (eq 'plain-list (org-element-type elem))
+      (-map (lambda (ls)
+              (car (org-element-parse-secondary-string (s-trim (buffer-substring-no-properties (+ (nth 0 ls) (length (nth 2 ls))) (nth 6 ls))) '(link))))
+            (org-element-property :structure elem)))))
+
+(cl-defmethod org-team-person--links ((p org-team-person))
+  (with-current-buffer (find-file-noselect (org-team-person-file p))
+    (save-excursion
+      (goto-char (point-min))
+      (when (re-search-forward "^* Links$" nil t)
+        ;; TODO: Assumption is that the list starts from next line
+        (forward-char)
+        (org-team--parse-list-of-links)))))
+
+(cl-defmethod org-team-person-open-links ((p org-team-person))
+  (let ((links (org-team-person--links p)))
+    (unless links
+      (error "No links found"))
+    (browse-url
+     (org-element-property :raw-link (helm :sources (helm-build-sync-source "Links"
+                                                     :candidates (-map (lambda (l) (cons (substring-no-properties (car (org-element-contents l))) l)) links))
+                                          :buffer "*helm org team - links*"
+                                          :prompt "Link: ")))))
+
 (defun org-team-list-people ()
   "Return a list of people found in ORG-TEAM-DIR."
   (unless org-team-dir
@@ -93,7 +120,13 @@
 (defun org-team ()
   "Main function to interact with people in team."
   (interactive)
-  (org-team-person-open-file (org-team--pick-person)))
+  (let ((people (org-team-list-people)))
+    (helm :sources (helm-build-sync-source "Team member"
+                     :candidates (-map (lambda (p) (cons (org-team-person-name p) p)) people)
+                     :action '(("Open File" . org-team-person-open-file)
+                               ("Open Links" . org-team-person-open-links)))
+          :buffer "*helm org team*"
+          :prompt "Name: ")))
 
 (provide 'org-team)
 

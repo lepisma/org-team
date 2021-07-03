@@ -9,9 +9,24 @@ versions tags though.
 Notes on the workflow follow.
 
 ** Workflow
-Each person gets mapped to a local directory with certain structure (still in
-flux) in place. They also get an equivalent cloud directory where we keep shared
-content.
+Each person gets mapped to a local directory with certain structure in place.
+They also get an equivalent cloud directory where we keep shared content.
+
+While most of the person's file is flexible in terms of how you keep things in
+it, a few functions expect the following structure:
+
+#+begin_src org
+  ,#+TITLE: Person Name
+
+  ...
+
+  ,* Links
+  + [[some-link][jira-project-link]]
+  + ...
+
+  ,* Log
+  + ...
+#+end_src
 
 *** Inventory
 I maintain a single inventory file with data kept in each person's directory.

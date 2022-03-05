@@ -35,6 +35,7 @@
 (require 'f)
 (require 'helm)
 (require 'org)
+(require 's)
 
 (defcustom org-team-dir nil
   "Directory with team files."
@@ -116,6 +117,17 @@
     (org-team-person-open-file person)
     (goto-char (point-min))
     (re-search-forward "^* Log$")))
+
+;;;###autoload
+(defun org-team-add-person (name)
+  "Initialize a new person in the system."
+  (interactive "sName: ")
+  (let ((dir-path (f-join org-team-dir (s-dashed-words name))))
+    (mkdir dir-path t)
+    (with-temp-file (f-join dir-path "index.org")
+      (insert "#+TITLE: " (s-titleized-words name))
+      (org-insert-heading nil nil t)
+      (insert "Log"))))
 
 (defun org-team ()
   "Main function to interact with people in team."

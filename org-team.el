@@ -3,7 +3,7 @@
 ;; Copyright (c) 2021 Abhinav Tushar
 
 ;; Author: Abhinav Tushar <abhinav@lepisma.xyz>
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Package-Requires: ((emacs "27") (f "0.20.0") (helm "3.7.0") (org "9.4"))
 ;; URL: https://github.com/lepisma/org-team
 
